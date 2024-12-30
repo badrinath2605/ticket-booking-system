@@ -1,0 +1,21 @@
+const movies = [
+    { title: "SALAAR", poster: "images/Salaar.jpg", id: 1 },
+    { title: "DUNKI", poster: "images/DUNKI.jpg", id: 2 },
+    { title: "HI NANA", poster: "HI NANA.jpg", id: 3 },
+];
+
+const movieContainer = document.getElementById('movies');
+movies.forEach(movie => {
+    const card = document.createElement('div');
+    card.className = 'movie-card';
+    card.innerHTML = `
+        <img src="${movie.poster}" alt="${movie.title}">
+        <h3>${movie.title}</h3>
+        <button onclick="viewDetails(${movie.id})">View Details</button>
+    `;
+    movieContainer.appendChild(card);
+});
+
+function viewDetails(id) {
+    window.location.href = `movie.html?id=${id}`;
+}

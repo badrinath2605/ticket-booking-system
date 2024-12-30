@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Details</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>BookMyShow Clone</h1>
+        <a href="index.html">Back to Home</a>
+    </header>
+    <main>
+        <div id="movie-details">
+            <!-- Populated dynamically -->
+        </div>
+    </main>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const movieId = urlParams.get('id');
+        const movie = movies.find(m => m.id == movieId);
+        if (movie) {
+            document.getElementById('movie-details').innerHTML = `
+                <h2>${movie.title}</h2>
+                <img src="${movie.poster}" alt="${movie.title}">
+                <p>Some description about the movie...</p>
+                <button onclick="bookNow(${movie.id})">Book Now</button>
+            `;
+        }
+
+        function bookNow(id) {
+            window.location.href = `booking.html?id=${id}`;
+        }
+    </script>
+</body>
+</html>
